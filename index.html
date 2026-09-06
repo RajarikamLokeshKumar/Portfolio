@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajarikam Lokesh Kumar — DevOps Engineer | AWS, Kubernetes, GitOps, Terraform</title>
+<meta name="description" content="DevOps Engineer with 3+ years building automated CI/CD pipelines, GitOps delivery with Argo CD, AWS infrastructure with Terraform, and Kubernetes deployments on EKS. Based in Hyderabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1B2A;
+    --bg-panel:#122942;
+    --bg-panel-2:#16314F;
+    --grid-major:rgba(95,180,217,0.10);
+    --grid-minor:rgba(95,180,217,0.045);
+    --line:#20486A;
+    --line-strong:#2F5F86;
+    --text:#EEF4F9;
+    --text-muted:#9FBBD1;
+    --text-dim:#5A7C99;
+    --ink:#5FB4D9;
+    --ink-dim:#3E86AC;
+    --amber:#E8A54B;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background-color:var(--bg);
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid-major) 0px, var(--grid-major) 1px, transparent 1px, transparent 96px),
+      repeating-linear-gradient(90deg, var(--grid-major) 0px, var(--grid-major) 1px, transparent 1px, transparent 96px),
+      repeating-linear-gradient(0deg, var(--grid-minor) 0px, var(--grid-minor) 1px, transparent 1px, transparent 24px),
+      repeating-linear-gradient(90deg, var(--grid-minor) 0px, var(--grid-minor) 1px, transparent 1px, transparent 24px);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  :focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
+
+  /* corner-bracket technical box */
+  .bp-box{position:relative;}
+  .bp-box::before,.bp-box::after{content:'';position:absolute;width:13px;height:13px;pointer-events:none;}
+  .bp-box::before{top:-1px;left:-1px;border-top:2px solid var(--ink);border-left:2px solid var(--ink);}
+  .bp-box::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--ink);border-right:2px solid var(--ink);}
+
+  /* dimension-line rule */
+  .dim-rule{display:flex; align-items:center; gap:0; width:100%;}
+  .dim-rule .tick{width:1px; height:8px; background:var(--line-strong); flex-shrink:0;}
+  .dim-rule .line{flex:1; height:1px; background:var(--line-strong);}
+
+  /* ---------- PAGE FRAME (blueprint sheet border) ---------- */
+  .sheet-frame{position:fixed; inset:10px; border:1px solid var(--line); pointer-events:none; z-index:1; display:none;}
+  @media (min-width:900px){ .sheet-frame{display:block;} }
+  .sheet-frame .corner{position:absolute; width:20px; height:20px;}
+  .sheet-frame .corner.tl{top:-1px; left:-1px; border-top:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
+  .sheet-frame .corner.tr{top:-1px; right:-1px; border-top:1.5px solid var(--ink); border-right:1.5px solid var(--ink);}
+  .sheet-frame .corner.bl{bottom:-1px; left:-1px; border-bottom:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
+  .sheet-frame .corner.br{bottom:-1px; right:-1px; border-bottom:1.5px solid var(--ink); border-right:1.5px solid var(--ink);}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,27,42,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:var(--maxw); margin:0 auto; padding:16px 32px; display:flex; align-items:center; justify-content:space-between;}
+  @media (max-width:640px){ .nav-inner{padding:14px 20px;} }
+  .nav-mark{font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:14.5px; letter-spacing:0.03em; display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--text);}
+  .nav-mark .crosshair{width:14px;height:14px;position:relative;flex-shrink:0;}
+  .nav-mark .crosshair::before,.nav-mark .crosshair::after{content:'';position:absolute;background:var(--ink);}
+  .nav-mark .crosshair::before{top:6px;left:0;width:14px;height:1.5px;}
+  .nav-mark .crosshair::after{left:6px;top:0;height:14px;width:1.5px;}
+  nav.nav-links{display:flex; gap:26px; align-items:center;}
+  nav.nav-links a{text-decoration:none; color:var(--text-muted); font-size:13.5px; font-weight:500; font-family:'IBM Plex Mono',monospace; transition:color .15s ease;}
+  nav.nav-links a:hover{color:var(--ink);}
+  .nav-cta{border:1px solid var(--ink); color:var(--ink) !important; padding:7px 14px;}
+  .nav-cta:hover{background:var(--ink); color:var(--bg) !important;}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line-strong); color:var(--text); font-size:18px; cursor:pointer; padding:4px 10px;}
+  @media (max-width:780px){
+    nav.nav-links{position:fixed; top:57px; left:0; right:0; background:var(--bg-panel); flex-direction:column; align-items:stretch; padding:8px 20px 20px; gap:0; border-bottom:1px solid var(--line); display:none;}
+    nav.nav-links.open{display:flex;}
+    nav.nav-links a{padding:12px 0; border-bottom:1px solid var(--line);}
+    .nav-cta{text-align:center; margin-top:10px;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- SHEET LABEL (section headers) ---------- */
+  .sheet-label{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .sheet-label .crosshair2{width:11px;height:11px;position:relative;flex-shrink:0;}
+  .sheet-label .crosshair2::before,.sheet-label .crosshair2::after{content:'';position:absolute;background:var(--ink);}
+  .sheet-label .crosshair2::before{top:5px;left:0;width:11px;height:1.4px;}
+  .sheet-label .crosshair2::after{left:5px;top:0;height:11px;width:1.4px;}
+  .sheet-label span{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-dim); letter-spacing:0.06em;}
+  .section-head{margin-bottom:48px; max-width:640px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px); color:var(--text);}
+  .section-head p{color:var(--text-muted); margin-top:14px; font-size:16px; max-width:56ch;}
+
+  section{padding:88px 0; position:relative; z-index:2;}
+  @media (max-width:760px){ section{padding:56px 0;} }
+  section.alt{background:rgba(22,49,79,0.35); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:80px 0 84px;}
+  @media (max-width:900px){ .hero{padding:48px 0 56px;} }
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:start;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:36px;} }
+
+  .drawing-no{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text-dim); letter-spacing:0.05em; margin-bottom:18px; display:flex; align-items:center; gap:10px;}
+  .drawing-no .amber-dot{width:6px;height:6px;border-radius:50%;background:var(--amber); box-shadow:0 0 0 0 rgba(232,165,75,.6); animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,165,75,.55);}70%{box-shadow:0 0 0 7px rgba(232,165,75,0);}100%{box-shadow:0 0 0 0 rgba(232,165,75,0);}}
+
+  .hero h1{font-size:clamp(32px,4.4vw,50px); line-height:1.14; max-width:15ch;}
+  .hero h1 .ink{color:var(--ink);}
+  .hero-sub{margin-top:22px; font-size:17px; color:var(--text-muted); max-width:54ch;}
+  .hero-cta-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 20px; font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:13.5px; text-decoration:none; cursor:pointer; border:1px solid var(--line-strong); transition:all .15s ease; letter-spacing:0.02em;}
+  .btn-primary{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+  .btn-primary:hover{background:#7cc4e2;}
+  .btn-secondary{color:var(--text);}
+  .btn-secondary:hover{border-color:var(--ink); color:var(--ink);}
+  .hero-meta-row{display:flex; gap:24px; margin-top:38px; flex-wrap:wrap;}
+  .hero-meta-item{font-size:13px; color:var(--text-dim); display:flex; align-items:center; gap:7px; font-family:'IBM Plex Mono',monospace;}
+  .hero-meta-item a{color:var(--text-muted); text-decoration:none; border-bottom:1px dashed var(--line-strong);}
+  .hero-meta-item a:hover{color:var(--ink); border-color:var(--ink);}
+
+  /* hero schematic panel */
+  .hero-panel{background:var(--bg-panel); border:1px solid var(--line); padding:24px 22px 22px;}
+  .hero-panel-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:14px; border-bottom:1px dashed var(--line-strong);}
+  .hp-title{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-dim); letter-spacing:0.05em;}
+  .hp-scale{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim);}
+  .stat-row{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stat-box{background:var(--bg-panel-2); padding:16px 14px;}
+  .stat-box .num{font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; color:var(--ink);}
+  .stat-box .lbl{font-size:11.5px; color:var(--text-muted); margin-top:5px; font-family:'IBM Plex Mono',monospace;}
+  .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .tag{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-muted); border:1px solid var(--line-strong); padding:5px 10px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:30px;} }
+  .about-copy p{color:var(--text-muted); font-size:16px; margin:0 0 18px;}
+  .about-copy strong{color:var(--text); font-weight:600;}
+  .spec-list{margin-top:8px;}
+  .spec-row{display:grid; grid-template-columns:32px 1fr; gap:14px; padding:16px 0; border-top:1px dashed var(--line-strong);}
+  .spec-row:last-child{border-bottom:1px dashed var(--line-strong);}
+  .spec-row .idx{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink); padding-top:2px;}
+  .spec-row h3{font-size:15.5px; font-weight:600; margin-bottom:4px;}
+  .spec-row p{color:var(--text-muted); font-size:14.5px; margin:0;}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
+  @media (max-width:860px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-card{background:var(--bg-panel); border:1px solid var(--line); padding:22px 20px;}
+  .skill-card h3{font-size:12.5px; color:var(--ink-dim); letter-spacing:0.05em; font-family:'IBM Plex Mono', monospace; font-weight:600; margin-bottom:16px; padding-bottom:13px; border-bottom:1px dashed var(--line-strong);}
+  .skill-list{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-item{font-size:13px; color:var(--text); background:var(--bg-panel-2); border:1px solid var(--line-strong); padding:6px 11px; font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .ruler{position:relative; padding-left:36px;}
+  .ruler::before{content:''; position:absolute; left:8px; top:0; bottom:0; width:1px; background:repeating-linear-gradient(0deg, var(--line-strong) 0, var(--line-strong) 6px, transparent 6px, transparent 14px);}
+  .job{position:relative; padding-bottom:56px;}
+  .job:last-child{padding-bottom:0;}
+  .job::before{content:''; position:absolute; left:-32px; top:5px; width:12px; height:12px; background:var(--bg); border:1.5px solid var(--ink); transform:rotate(45deg);}
+  .job.minor::before{border-color:var(--text-dim);}
+  .job-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .job-title{font-size:19px; font-weight:600; font-family:'Space Grotesk',sans-serif;}
+  .job-dates{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-dim); white-space:nowrap;}
+  .job-company{color:var(--ink); font-size:14.5px; font-weight:500; margin-bottom:18px; font-family:'IBM Plex Mono',monospace;}
+  .job-company .loc{color:var(--text-dim); font-weight:400;}
+  .job ul{margin:0 0 18px; padding-left:18px; color:var(--text-muted); font-size:15px;}
+  .job ul li{margin-bottom:10px;}
+  .job ul li::marker{color:var(--ink-dim); content:'▸ ';}
+  .job ul li strong{color:var(--text); font-weight:600;}
+  .job-stack{display:flex; flex-wrap:wrap; gap:7px;}
+
+  /* ---------- SCHEMATIC PIPELINE ---------- */
+  .pipeline-wrap{background:var(--bg-panel); border:1px solid var(--line); padding:36px 28px 30px; overflow-x:auto;}
+  .pipeline{display:flex; align-items:flex-start; gap:0; min-width:820px;}
+  @media (max-width:820px){ .pipeline{flex-direction:column; min-width:0; gap:0;} }
+  .pnode{width:160px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; text-align:center;}
+  @media (max-width:820px){ .pnode{flex-direction:row; text-align:left; width:100%; align-items:center; gap:16px; padding:16px 0;} }
+  .pnode-box{width:100%; padding:14px 8px; background:var(--bg-panel-2); border:1px solid var(--line-strong); position:relative; margin-bottom:10px;}
+  .pnode-box::before,.pnode-box::after{content:'';position:absolute;width:9px;height:9px;}
+  .pnode-box::before{top:-1px;left:-1px;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);}
+  .pnode-box::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);}
+  @media (max-width:820px){ .pnode-box{margin-bottom:0; flex-shrink:0; width:auto; min-width:150px;} }
+  .pnode-tag{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink-dim); margin-bottom:6px; letter-spacing:0.05em;}
+  .pnode-label{font-size:13.5px; font-weight:600; color:var(--text);}
+  .pnode-sub{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--text-dim); margin-top:8px; line-height:1.5;}
+  .pconnector{flex:1; height:1px; position:relative; min-width:16px; margin-top:30px; background-image:repeating-linear-gradient(90deg, var(--line-strong) 0 5px, transparent 5px 10px);}
+  @media (max-width:820px){ .pconnector{width:1px; height:22px; margin-top:0; margin-left:26px; flex:none; background-image:repeating-linear-gradient(0deg, var(--line-strong) 0 5px, transparent 5px 10px);} }
+  .pconnector::after{content:'▸'; position:absolute; right:-3px; top:-8px; color:var(--ink); font-size:12px;}
+  @media (max-width:820px){ .pconnector::after{content:'▾'; top:auto; bottom:-4px; right:-6px; left:-6px;} }
+  .pipeline-caption{margin-top:28px; font-size:13px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; text-align:center;}
+  @media (max-width:820px){ .pipeline-caption{text-align:left;} }
+
+  /* ---------- STRENGTHS + EDUCATION ---------- */
+  .split-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px;}
+  @media (max-width:860px){ .split-grid{grid-template-columns:1fr; gap:36px;} }
+  .strength-item{display:flex; gap:12px; padding:14px 0; border-top:1px dashed var(--line-strong); font-size:15px; color:var(--text-muted); align-items:flex-start;}
+  .strength-item:last-child{border-bottom:1px dashed var(--line-strong);}
+  .strength-item .chk{font-family:'IBM Plex Mono',monospace; color:var(--ink); flex-shrink:0;}
+  .edu-card{background:var(--bg-panel); border:1px solid var(--line); padding:24px; position:relative;}
+  .edu-card::before,.edu-card::after{content:'';position:absolute;width:12px;height:12px;}
+  .edu-card::before{top:-1px;left:-1px;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);}
+  .edu-card::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);}
+  .edu-card .deg{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px; margin-bottom:6px;}
+  .edu-card .school{color:var(--text-muted); font-size:14.5px; margin-bottom:4px;}
+  .edu-card .dates{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim);}
+  .edu-note{margin-top:20px; font-size:13.5px; color:var(--text-dim); line-height:1.6;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{background:var(--bg-panel); border:1px solid var(--line); padding:56px 48px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center; position:relative;}
+  .contact-inner::before,.contact-inner::after{content:'';position:absolute;width:16px;height:16px;}
+  .contact-inner::before{top:-1px;left:-1px;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);}
+  .contact-inner::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);}
+  @media (max-width:860px){ .contact-inner{grid-template-columns:1fr; padding:38px 26px;} }
+  .contact-inner h2{font-size:clamp(24px,3.4vw,34px); margin-bottom:14px; max-width:16ch;}
+  .contact-inner p{color:var(--text-muted); font-size:16px; max-width:46ch;}
+  .contact-links{display:flex; flex-direction:column; gap:12px;}
+  .contact-link{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); font-size:14.5px; padding:13px 15px; background:var(--bg-panel-2); border:1px solid var(--line-strong); transition:border-color .15s ease;}
+  .contact-link:hover{border-color:var(--ink);}
+  .contact-link svg{color:var(--ink); flex-shrink:0;}
+  .cl-label{font-size:10.5px; color:var(--text-dim); display:block; font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em;}
+
+  /* ---------- TITLE BLOCK FOOTER ---------- */
+  footer{padding:0; border-top:1px solid var(--line); position:relative; z-index:2;}
+  .title-block{max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; font-family:'IBM Plex Mono',monospace; font-size:11.5px;}
+  @media (max-width:700px){ .title-block{grid-template-columns:1fr 1fr;} }
+  .tb-cell{border-right:1px solid var(--line); border-top:1px solid var(--line); padding:14px 18px;}
+  .tb-cell:last-child{border-right:none;}
+  .tb-cell .tb-k{color:var(--text-dim); margin-bottom:4px; letter-spacing:0.04em;}
+  .tb-cell .tb-v{color:var(--text-muted);}
+  .tb-cell a{color:var(--text-muted); text-decoration:none;}
+  .tb-cell a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="sheet-frame" aria-hidden="true">
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+</div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="crosshair"></span>RLK / DRAWING-001</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">≡</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#pipeline">How I Ship</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="drawing-no"><span class="amber-dot"></span>AVAILABLE FOR DEVOPS &amp; CLOUD OPPORTUNITIES</div>
+        <h1>DevOps engineer building automated, <span class="ink">GitOps-driven</span> delivery on AWS &amp; Kubernetes.</h1>
+        <p class="hero-sub">3+ years designing Jenkins-to-Kubernetes delivery pipelines — provisioning AWS infrastructure with Terraform, shipping through Argo CD and Helm, and keeping production systems observable and reliable along the way.</p>
+        <div class="hero-cta-row">
+          <a href="#contact" class="btn btn-primary">Contact me</a>
+          <a href="Lokesh_Kumar_Resume.pdf" download class="btn btn-secondary">Download resume</a>
+        </div>
+        <div class="hero-meta-row">
+          <span class="hero-meta-item">Hyderabad, India</span>
+          <span class="hero-meta-item"><a href="mailto:rajarikamlokeshkumar@gmail.com">rajarikamlokeshkumar@gmail.com</a></span>
+          <span class="hero-meta-item"><a href="https://linkedin.com/in/rajarikamlokeshkumar-369206249" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+        </div>
+      </div>
+
+      <div class="hero-panel bp-box">
+        <div class="hero-panel-head">
+          <span class="hp-title">FIG. 01 — ENGINEER PROFILE</span>
+          <span class="hp-scale">SCALE N.T.S.</span>
+        </div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="num">3+</div><div class="lbl">YRS DEVOPS</div></div>
+          <div class="stat-box"><div class="num">EKS</div><div class="lbl">K8S ON AWS</div></div>
+          <div class="stat-box"><div class="num">GITOPS</div><div class="lbl">ARGO CD + HELM</div></div>
+          <div class="stat-box"><div class="num">IaC</div><div class="lbl">TERRAFORM-FIRST</div></div>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Kubernetes</span>
+          <span class="tag">Argo CD</span><span class="tag">Jenkins</span><span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span><span class="tag">Trivy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 01 / ABOUT</span></div>
+        <h2>Infrastructure that ships fast and stays up.</h2>
+      </div>
+      <div class="about-copy">
+        <p>I'm a DevOps engineer at <strong>PruTech Solutions</strong>, where I own the path code takes from a Git commit to a running service in production — Jenkins pipelines, security scanning, containerization, and GitOps deployment to Kubernetes on AWS.</p>
+        <p>My approach is to treat delivery as a system, not a series of manual steps. I automate provisioning with <strong>Terraform</strong> so infrastructure stays consistent across environments, use <strong>Argo CD and Helm</strong> so Kubernetes deployments are declarative and repeatable, and build <strong>SonarQube and Trivy</strong> checks into the pipeline so security scanning happens before code reaches a cluster, not after.</p>
+        <p>The part of the job I take just as seriously is what happens after deployment — <strong>monitoring, incident response, and root cause analysis</strong> in live Linux environments. A pipeline that ships fast but leaves you blind in production isn't finished. I build in observability with Prometheus, Grafana, and CloudWatch from the start.</p>
+        <div class="spec-list">
+          <div class="spec-row"><span class="idx">01</span><div><h3>Automate the repeatable</h3><p>Infrastructure and deployments defined as code, not run by hand.</p></div></div>
+          <div class="spec-row"><span class="idx">02</span><div><h3>Secure before you ship</h3><p>Scanning integrated into CI, not bolted on afterward.</p></div></div>
+          <div class="spec-row"><span class="idx">03</span><div><h3>Own it after deploy</h3><p>Observability and incident response are part of the job, not someone else's.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 02 / TECHNICAL EXPERTISE</span></div>
+        <h2>The stack I build and operate</h2>
+        <p>Grouped by where each tool sits in the delivery path — from infrastructure through to what keeps it running.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card"><h3>CLOUD PLATFORM</h3><div class="skill-list">
+          <span class="skill-item">AWS EC2</span><span class="skill-item">AWS S3</span><span class="skill-item">AWS VPC</span>
+          <span class="skill-item">AWS IAM</span><span class="skill-item">AWS ELB</span><span class="skill-item">Auto Scaling Groups</span>
+          <span class="skill-item">AWS EKS</span><span class="skill-item">AWS SNS</span><span class="skill-item">AWS RDS</span>
+        </div></div>
+        <div class="skill-card"><h3>INFRASTRUCTURE AS CODE</h3><div class="skill-list"><span class="skill-item">Terraform</span></div></div>
+        <div class="skill-card"><h3>CONTAINERS &amp; ORCHESTRATION</h3><div class="skill-list">
+          <span class="skill-item">Docker</span><span class="skill-item">Kubernetes</span><span class="skill-item">Helm</span><span class="skill-item">Argo CD (GitOps)</span>
+        </div></div>
+        <div class="skill-card"><h3>CI/CD &amp; BUILD</h3><div class="skill-list">
+          <span class="skill-item">Jenkins</span><span class="skill-item">Maven</span><span class="skill-item">Git</span><span class="skill-item">GitHub</span><span class="skill-item">Bitbucket</span>
+        </div></div>
+        <div class="skill-card"><h3>MONITORING &amp; OBSERVABILITY</h3><div class="skill-list">
+          <span class="skill-item">Prometheus</span><span class="skill-item">Grafana</span><span class="skill-item">AWS CloudWatch</span>
+        </div></div>
+        <div class="skill-card"><h3>SECURITY &amp; DEVSECOPS</h3><div class="skill-list">
+          <span class="skill-item">SonarQube</span><span class="skill-item">Trivy</span>
+        </div></div>
+        <div class="skill-card"><h3>SCRIPTING</h3><div class="skill-list">
+          <span class="skill-item">Bash</span><span class="skill-item">Python</span>
+        </div></div>
+        <div class="skill-card"><h3>ARTIFACT MANAGEMENT</h3><div class="skill-list">
+          <span class="skill-item">JFrog Artifactory</span><span class="skill-item">Nexus Repository</span>
+        </div></div>
+        <div class="skill-card"><h3>WEB SERVER &amp; OS</h3><div class="skill-list">
+          <span class="skill-item">Nginx</span><span class="skill-item">Linux</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 03 / EXPERIENCE</span></div>
+        <h2>Where I've built this</h2>
+      </div>
+
+      <div class="ruler">
+        <div class="job">
+          <div class="job-head"><span class="job-title">DevOps Engineer</span><span class="job-dates mono">06/2023 — PRESENT</span></div>
+          <div class="job-company">PRUTECH SOLUTIONS <span class="loc">· HYDERABAD</span></div>
+          <ul>
+            <li><strong>Built end-to-end Jenkins CI/CD pipelines</strong> covering build, test, security scanning, Docker image creation, and deployment — improving release efficiency across the team.</li>
+            <li><strong>Implemented GitOps delivery with Argo CD</strong>, enabling automated application sync, rollbacks, and Kubernetes deployments across dev, staging, and production.</li>
+            <li><strong>Standardized deployments with Helm charts</strong>, packaging containerized applications for repeatable, consistent releases.</li>
+            <li><strong>Provisioned AWS infrastructure with Terraform</strong> — EC2, VPC, IAM, S3, ELB, Auto Scaling Groups, and EKS — replacing manual setup with automated, version-controlled infrastructure.</li>
+            <li><strong>Ran production Kubernetes on EKS</strong>, managing Deployments, Pods, Services, Ingress, ConfigMaps, and Secrets to keep applications available and scalable.</li>
+            <li><strong>Executed Rolling, Blue-Green, and Canary deployments</strong> to enable zero-downtime releases.</li>
+            <li><strong>Built monitoring and alerting</strong> with Prometheus, Grafana, and CloudWatch to improve system observability.</li>
+            <li><strong>Integrated SonarQube and Trivy into Jenkins</strong>, embedding DevSecOps practice and automated security scanning directly into the delivery pipeline.</li>
+            <li><strong>Managed build artifacts and dependencies</strong> through JFrog Artifactory and Nexus Repository as part of CI/CD workflows.</li>
+            <li><strong>Handled production support and incident response</strong>, performing root cause analysis and resolving application and infrastructure issues on Linux systems.</li>
+            <li>Worked cross-functionally with development, QA, and operations in Agile/Scrum teams to ship secure, scalable, cloud-native applications.</li>
+          </ul>
+          <div class="job-stack">
+            <span class="tag">Jenkins</span><span class="tag">Terraform</span><span class="tag">AWS EKS</span>
+            <span class="tag">Argo CD</span><span class="tag">Helm</span><span class="tag">Docker</span>
+            <span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">SonarQube</span><span class="tag">Trivy</span>
+          </div>
+        </div>
+
+        <div class="job minor">
+          <div class="job-head"><span class="job-title">.NET Developer Intern</span><span class="job-dates mono">01/2023 — 05/2023</span></div>
+          <div class="job-company" style="color:var(--text-dim);">TEKHOPS IT SOLUTIONS <span class="loc">· HYDERABAD</span></div>
+          <ul>
+            <li>Assisted in developing backend components using ASP.NET MVC and Web API, and contributed to migrating legacy applications from .NET Framework to .NET Core.</li>
+            <li>Performed bug fixing, testing, and performance improvements for backend services, and took part in code reviews.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section id="pipeline" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 04 / DELIVERY SCHEMATIC</span></div>
+        <h2>From commit to production, owned end to end</h2>
+        <p>This is the actual delivery path I've built and run at PruTech — not a generic CI/CD diagram.</p>
+      </div>
+
+      <div class="pipeline-wrap bp-box">
+        <div class="pipeline">
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">01</div><div class="pnode-label">Git commit</div></div>
+            <div class="pnode-sub">GITHUB / BITBUCKET</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">02</div><div class="pnode-label">Jenkins build</div></div>
+            <div class="pnode-sub">BUILD + TEST + MAVEN</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">03</div><div class="pnode-label">Security scan</div></div>
+            <div class="pnode-sub">SONARQUBE / TRIVY</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">04</div><div class="pnode-label">Container build</div></div>
+            <div class="pnode-sub">DOCKER → ARTIFACTORY</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">05</div><div class="pnode-label">Argo CD sync</div></div>
+            <div class="pnode-sub">GITOPS + HELM</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">06</div><div class="pnode-label">EKS deploy</div></div>
+            <div class="pnode-sub">ROLLING / BLUE-GREEN / CANARY</div>
+          </div>
+          <div class="pconnector"></div>
+          <div class="pnode">
+            <div class="pnode-box"><div class="pnode-tag">07</div><div class="pnode-label">Observe</div></div>
+            <div class="pnode-sub">PROMETHEUS / GRAFANA / CLOUDWATCH</div>
+          </div>
+        </div>
+        <div class="pipeline-caption">NOTE — TERRAFORM PROVISIONS THE AWS INFRASTRUCTURE UNDERNEATH EVERY STAGE, FROM JENKINS AGENTS TO THE EKS CLUSTER ITSELF.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS + EDUCATION -->
+  <section id="strengths">
+    <div class="wrap split-grid">
+      <div>
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 05 / STRENGTHS</span></div>
+        <h2 style="margin-bottom:8px;">How I operate day to day</h2>
+        <div style="margin-top:24px;">
+          <div class="strength-item"><span class="chk">[✓]</span> Strong troubleshooting and hands-on production support</div>
+          <div class="strength-item"><span class="chk">[✓]</span> Comfortable operating in Agile/Scrum delivery cycles</div>
+          <div class="strength-item"><span class="chk">[✓]</span> Works closely across development, QA, and operations</div>
+          <div class="strength-item"><span class="chk">[✓]</span> Picks up new tools and platforms quickly</div>
+          <div class="strength-item"><span class="chk">[✓]</span> Steady under multiple concurrent, fast-moving projects</div>
+        </div>
+      </div>
+      <div>
+        <div class="sheet-label"><span class="crosshair2"></span><span>SHEET 06 / EDUCATION</span></div>
+        <h2 style="margin-bottom:24px;">Foundation</h2>
+        <div class="edu-card">
+          <div class="deg">Bachelor of Information Technology</div>
+          <div class="school">Malla Reddy College of Engineering &amp; Technology</div>
+          <div class="dates mono">08/2019 — 04/2023 · HYDERABAD</div>
+        </div>
+        <div class="edu-note">Started in software development (.NET) before moving into DevOps full-time in June 2023 — the shift toward infrastructure and delivery was a deliberate one.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div>
+          <h2>Have a DevOps, cloud, or infrastructure challenge?</h2>
+          <p>I'm open to DevOps, Cloud, and Platform Engineering roles. Let's talk about how I can help build reliable, automated, and secure delivery on AWS and Kubernetes.</p>
+          <div class="hero-cta-row" style="margin-top:26px;">
+            <a href="mailto:rajarikamlokeshkumar@gmail.com" class="btn btn-primary">Email me</a>
+            <a href="Lokesh_Kumar_Resume.pdf" download class="btn btn-secondary">Download resume</a>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:rajarikamlokeshkumar@gmail.com">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+            <span><span class="cl-label">EMAIL</span>rajarikamlokeshkumar@gmail.com</span>
+          </a>
+          <a class="contact-link" href="tel:+919640291753">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg>
+            <span><span class="cl-label">PHONE</span>+91 96402 91753</span>
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/rajarikamlokeshkumar-369206249" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+            <span><span class="cl-label">LINKEDIN</span>rajarikamlokeshkumar</span>
+          </a>
+          <a class="contact-link" href="#" onclick="return false;" style="cursor:default;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span class="cl-label">LOCATION</span>Hyderabad, India</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="title-block">
+    <div class="tb-cell"><div class="tb-k">DRAWING TITLE</div><div class="tb-v">Rajarikam Lokesh Kumar — DevOps Engineer Portfolio</div></div>
+    <div class="tb-cell"><div class="tb-k">DRAWN BY</div><div class="tb-v">R. Lokesh Kumar</div></div>
+    <div class="tb-cell"><div class="tb-k">REV</div><div class="tb-v">A — 2026</div></div>
+    <div class="tb-cell"><div class="tb-k">CONTACT</div><div class="tb-v"><a href="mailto:rajarikamlokeshkumar@gmail.com">rajarikamlokeshkumar@gmail.com</a></div></div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
